@@ -9,7 +9,7 @@ class Song < ActiveRecord::Base
 
   def past_release_year?
     if release_year != nil && release_year > Time.new.year
-      error.add("release year cannot be in the future")
+      errors.add("release year cannot be in the future")
     end
   end
 end
