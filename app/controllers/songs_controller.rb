@@ -19,19 +19,23 @@ class SongsController < ApplicationController
   end
 
   def show
+    @song = Song.find(params[:id])
   end
 
   def edit
+    @song = Song.find(params[:id])
   end
 
   def update
+    @song = Song.find(params[:id])
+    if @song.update(au)
   end
 
   def delete
   end
 
-  def song_params(*args)
-    params.require(:song).permit(:title, :released, :release_year, :artist_name, :genre)
+  def song_params
+    params.permit(:title, :released, :release_year, :artist_name, :genre)
   end 
 
 
