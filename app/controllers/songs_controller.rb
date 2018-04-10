@@ -28,7 +28,11 @@ class SongsController < ApplicationController
 
   def update
     @song = Song.find(params[:id])
-    if @song.update(au)
+    if @song.update(song_params)
+      redirect_to song_path(@song)
+    else
+      render :edit
+    end 
   end
 
   def delete
@@ -36,7 +40,7 @@ class SongsController < ApplicationController
 
   def song_params
     params.permit(:title, :released, :release_year, :artist_name, :genre)
-  end 
+  end
 
 
 end
